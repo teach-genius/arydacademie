@@ -1,0 +1,284 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Language" content="fr">
+    <meta name="language" content="French">
+    <meta name="description" content="AryadAcademie - Formation et expertise en programmation, IA, et cybersécurité, disponible en Afrique et en Europe.">
+    <meta name="keywords" content="programmation, intelligence artificielle, cybersécurité, formation, Afrique, Europe, France, Maroc, Gabon, Sénégal, Côte d'Ivoire">
+    <meta name="author" content="AryadAcademie">
+    <meta name="robots" content="index, follow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <title>{%block title%}{%endblock%}</title>
+</head>
+<body>
+    
+    <nav>
+        <div id="logo">
+            <ul>
+                <li><a class="item-logo" href=""><i class="fa-solid fa-code"></i></a></li>
+                <li><a class="item-logo" href="">AryadAcademie</a></li>
+            </ul>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a class="menu-link" href="">Acceuil</a></li>
+                <li><a class="menu-link" href="">Formations</a></li>
+                <li><a class="menu-link" href="">Collectif</a></li>
+                <li><a class="menu-link" href="">Ressources</a></li>
+                <li><a class="menu-link" href="">Contact</a></li>
+            </ul>
+        </div>
+        <button id="menbtn" onclick="hidden_nave()" style="color: rgb(209, 213, 219); font-weight: bold;font-size:1.5rem; background-color: rgb(17, 24, 39);border: none; padding: 5px; position: relative; margin-right: 12px;">
+            <i class="fa-solid fa-bars"></i>
+        </button>        
+        
+        <div id="btn-nav">
+            <a href="">Rejoindre le Collectif</a>
+        </div>
+    </nav>
+    <main>   
+        <div id="menu-2">
+            <ul>
+                <li><a class="menu-link2" href="">Acceuil</a></li>
+                <li><a class="menu-link2" href="">Formations</a></li>
+                <li><a class="menu-link2" href="">Collectif</a></li>
+                <li><a class="menu-link2" href="">Ressources</a></li>
+                <li><a class="menu-link2" href="">Contact</a></li>
+                <li style="position: relative;top: 0px;">
+                    <hr>
+                </li>
+                <li>
+                    <div
+                        style="border-radius: 8px; text-align: center;  background-color: #581c87;width: 100%;padding: 12px;">
+                        <a style="color: white;font-size: 1.5rem;
+                        line-height: 1.25rem;
+                        font-weight: 500;" href="">Rejoindre le Collectif</a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+        <script>
+            window.onload = function() {
+                let block = document.getElementById("menu-2");
+                let state = true;
+                let btn =  document.getElementById("menbtn");
+
+                function hidden_nave() {
+                    if (state) {
+                        block.style.display = "block";
+                        btn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                        
+                    } else {
+                        block.style.display = "none";
+                        btn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                
+                    }
+                    state = !state;
+                }
+                document.querySelector("button").onclick = hidden_nave;
+            };
+        </script>
+        
+        <section id="section-top">
+            <div id="box-view">
+                <h1 id="head-box-view">
+                    Apprenez l'Informatique avec un Collectif Passionné
+                </h1>
+                <p>
+                    Rejoignez notre communauté d'apprenants et d'experts en informatique. Développez vos compétences
+                    avec un accompagnement personnalisé.
+                </p>
+                <div id="box-btns">
+                    <ul>
+                        <li class="btn-box-view"><a href=""><i class="fa-solid fa-code"></i>Découvrir nos Formations</a>
+                        </li>
+                        <li class="btn-box-view"><a href=""><i class="fa-solid fa-people-group"></i>Rejoindre le
+                                Collectif</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="view-img">
+                <img height="100%" width="100%" src="{%static 'team.png'%} " alt="team" srcset="">
+            </div>
+        </section>
+
+        <section id="sect-ion-2">
+            <div id="head-title">
+                <h1>Pourquoi Choisir AryadAcademie?</h1>
+                <p>Une approche unique de l'apprentissage de l'informatique, basée sur le collectif et l'expertise.</p>
+            </div>
+            
+            <div id="options">
+                {%for option in options%}
+                <div class="view-opt">
+                    <span><a href=""><i class="{{option.icon}}"></i></span>
+                    <h1>{{option.title}}</h1>
+                    <p>{{option.description}}</p>
+                </div>
+                {%endfor%}
+            </div>
+        </section>
+
+        <section id="programme">
+            <div id="pro-gra">
+                <h1>Nos Parcours de Formation</h1>
+                <p>Des formations complètes pour maîtriser les technologies modernes.</p>
+            </div>
+            
+            <div id="view-programms">
+                {%for programme,index in programmes%}
+                <div class="boite-programm programe-col-index-{{index}}">
+                    <img src="{{programme.url}}" alt="" srcset="" height="160px" width="100%">
+                    <div class="info-pro">
+                        <h1>{{programme.title}}</h1>
+                        <p>{{programme.description}}</p>
+                        <a href="">Voir le programme <span><i class="fa-solid fa-angle-right"></i></span></a>
+                    </div>
+                </div>
+                {%endfor%}
+                
+            </div>
+        </section>
+        <div id="transit-one">
+            <ul>
+                <li>
+                    <div>
+                        <h1>50K+</h1>
+                        <p>Students</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1>1,200+</h1>
+                        <p>Courses</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1>300+</h1>
+                        <p>Instructors</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1>150+</h1>
+                        <p>Countries</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+       
+        <section id="sect-ion-4">
+            <div id="head-sec">
+                <h1>What Our Students Say</h1>
+                <p>Don't just take our word for it. Hear from our students.</p>
+            </div>
+
+            <div id="comments">
+                {%for comment in comments%}
+                <div class="bt-comment"
+                    style="box-shadow: 2px 2px 15px rgba(128, 128, 128,0.5); gap: 20px; align-items: start; padding: 20px; background-color: white;border-radius: 8px; display: flex;flex-direction: column;width:354px;max-height:250px;min-height: 200px;">
+                    <div style="color:#FACC15; display: flex;flex-direction: row;gap: 10px;">
+                        {%for star in comment.stars%}
+                        <i class="fa-solid fa-star"></i>
+                        {%endfor%}
+                    </div>
+                    <p style="font-size: 18px;font-family: sans-serif;">"{{comment.text}}"</p>
+                    <div style="gap: 10px; align-items: center; display: flex;flex-direction: row;">
+                        <img style="height: 50px; width: 50px;object-fit: cover;overflow: hidden;border-radius: 50px;"
+                            src="{{comment.profile}}" alt="" srcset="">
+                        <div style="display: flex;flex-direction: column;gap: 10px;">
+                            <h1 style="line-height: 10px;font-family: sans-serif;">{{comment.name}}</h1>
+                            <p style="line-height: 10px;font-family: sans-serif;">{{comment.fonction}}</p>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </section>
+        
+        <div id="transit-two">
+            <div style="text-align: center;">
+                <h1>Ready to Start Your Learning Journey?</h1>
+                <p>Join thousands of students already learning on our platform.</p>
+            </div>
+           
+            <div id="btns-op">
+                <ul>
+                    <li><a id="btns-op1" href="">Get Started Today</a></li>
+                    <li><a id="btns-op2" href="">Learn More</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <ul style="border-bottom: 1px solid rgb(156, 163, 175);padding-bottom: 20px;">
+                <li>
+                    <div>
+                        <ul>
+                            <li>
+                                <h1>EduLearn</h1>
+                            </li>
+                            <li class="item-footer">Empowering individuals through <br> quality education and accessible
+                                learning resources.</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <ul>
+                            <li>
+                                <h1>Quick Links</h1>
+                            </li>
+                            <li class="item-footer">Home</li>
+                            <li class="item-footer">About Us</li>
+                            <li class="item-footer">Courses</li>
+                            <li class="item-footer">Blog</li>
+                            <li class="item-footer">Contact</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <ul>
+                            <li>
+                                <h1>Categories</h1>
+                            </li>
+                            <li class="item-footer">Web Development</li>
+                            <li class="item-footer">Data Science</li>
+                            <li class="item-footer">Business</li>
+                            <li class="item-footer">Design</li>
+                            <li class="item-footer">Marketing</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <ul>
+                            <li>
+                                <h1>Contact Us</h1>
+                            </li>
+                            <li class="item-footer">123 Education Street</li>
+                            <li class="item-footer">Learning City, ED 12345</li>
+                            <li class="item-footer">Email: info@edulearn.com</li>
+                            <li class="item-footer">Phone: (123) 456-7890</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <div style="text-align: center; padding: 12px;margin-top: 20px;">
+                <p id="copy">© 2025 EduLearn. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+</body>
+
+</html>
